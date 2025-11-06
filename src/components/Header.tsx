@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,15 +11,28 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Mengunci scroll saat menu mobile terbuka
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false); // Otomatis tutup menu
+    }
   };
 
   const navItems = [
@@ -31,92 +44,102 @@ const Header = () => {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-medium"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.button
-            onClick={() => scrollToSection("hero")}
-            className="text-xl md:text-2xl font-bold text-primary hover:text-primary-dark transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Kedai Arunika
-          </motion.button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
-            {navItems.map((item) => (
-              <Button
-                key={item.id}
-                variant="ghost"
-                onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary hover:bg-primary/10 text-base"
-              >
-                {item.label}
-              </Button>
-            ))}
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="ml-2 bg-primary hover:bg-primary-dark text-primary-foreground"
+    <Fragment>
+      {/* 1. HEADER BAR UTAMA (z-50) */}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled || isMobileMenuOpen
+            ? "bg-card/95 backdrop-blur-md shadow-medium"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <motion.button
+              onClick={() => scrollToSection("hero")}
+              className="text-xl md:text-2xl font-bold text-primary hover:text-primary-dark transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Hubungi Kami
-            </Button>
-          </div>
+              Kedai Arunika
+            </motion.button>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
-            >
-              <div className="flex flex-col gap-2 py-4 bg-card/95 backdrop-blur-md rounded-lg mt-4 shadow-soft">
-                {navItems.map((item) => (
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-2">
+              {navItems.map((item, index) => {
+                const isLastItem = index === navItems.length - 1;
+                
+                return (
                   <Button
                     key={item.id}
-                    variant="ghost"
+                    variant={isLastItem ? "default" : "ghost"}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-foreground hover:text-primary hover:bg-primary/10 justify-start text-sm"
+                    className={
+                      isLastItem
+                        ? "ml-2 bg-primary hover:bg-primary-dark text-primary-foreground" // Gaya Tombol Solid (CTA)
+                        : "text-foreground hover:text-primary hover:bg-primary/10 text-base" // Gaya Tombol Ghost
+                    }
                   >
                     {item.label}
                   </Button>
-                ))}
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-primary hover:bg-primary-dark text-primary-foreground text-sm"
-                >
-                  Hubungi Kami
-                </Button>
+                );
+              })}
+            </div>
+
+            {/* Tombol Hamburger (z-index terpisah agar di atas dropdown z-40) */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden text-foreground relative z-50"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
+        </nav>
+      </motion.header>
+
+      {/* 2. MENU DROPDOWN (z-40, DI LUAR HEADER) */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-0 left-0 h-screen w-screen bg-card/95 backdrop-blur-lg z-40 md:hidden"
+          >
+            <div className="container mx-auto px-4 h-full overflow-y-auto pt-24 pb-12">
+              
+              <div className="flex flex-col gap-3">
+                {navItems.map((item, index) => {
+                  const isLastItem = index === navItems.length - 1;
+
+                  return (
+                    <Button
+                      key={item.id}
+                      variant={isLastItem ? "default" : "ghost"}
+                      onClick={() => scrollToSection(item.id)}
+                      /* --- PERBAIKAN UKURAN DI SINI --- */
+                      className={
+                        isLastItem
+                          ? "bg-primary hover:bg-primary-dark text-primary-foreground text-base mt-4 py-3" // text-lg -> text-base, py-4 -> py-3
+                          : "text-foreground hover:text-primary hover:bg-primary/10 justify-start text-base py-3" // text-lg -> text-base, py-4 -> py-3
+                      }
+                    >
+                      {item.label}
+                    </Button>
+                  );
+                })}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </motion.header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Fragment>
   );
 };
 

@@ -2,6 +2,15 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import aboutImage from "@/assets/about-kedai.jpg";
+// --- 1. Import ikon profesional ---
+import { CupSoda, Heart, Leaf } from "lucide-react"; 
+
+// --- 2. Buat array untuk fitur agar lebih rapi ---
+const features = [
+  { icon: CupSoda, text: "Bahan Segar Pilihan" },
+  { icon: Heart, text: "Dibuat dengan Cinta" },
+  { icon: Leaf, text: "Suasana Nyaman & Alami" },
+];
 
 const About = () => {
   const ref = useRef(null);
@@ -17,7 +26,8 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl text-center mb-12 text-gradient">
+          {/* --- 3. Judul responsif --- */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-gradient">
             Tentang Kami
           </h2>
           
@@ -40,31 +50,31 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-6"
             >
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                <strong className="text-primary text-xl">Kedai Arunika</strong> adalah kedai minuman lokal yang hadir untuk menyegarkan hari Anda dengan berbagai pilihan minuman segar yang dibuat dari bahan-bahan pilihan berkualitas tinggi.
+              {/* --- 4. Paragraf responsif (text-base md:text-lg) --- */}
+              <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+                {/* Hapus 'text-xl' agar ukuran konsisten */}
+                <strong className="font-semibold text-primary">Kedai Arunika</strong> adalah kedai minuman lokal yang hadir untuk menyegarkan hari Anda dengan berbagai pilihan minuman segar yang dibuat dari bahan-bahan pilihan berkualitas tinggi.
               </p>
               
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Kami percaya bahwa setiap tegukan minuman harus memberikan kesegaran dan kebahagiaan. Dengan penuh cinta dan perhatian, kami menyajikan setiap minuman untuk memberikan pengalaman yang tak terlupakan bagi pelanggan kami.
-              </p>
-
-              <p className="text-lg text-foreground/80 leading-relaxed">
+              <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
                 Dari jus buah segar, kelapa muda yang manis, hingga milkshake yang creamy - setiap minuman di Kedai Arunika dibuat dengan semangat untuk menyegarkan hari Anda!
               </p>
 
-              <div className="pt-4 space-y-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">🍹</span>
-                  <span className="text-foreground font-medium">Bahan Segar Pilihan</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">💚</span>
-                  <span className="text-foreground font-medium">Dibuat dengan Cinta</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">🌿</span>
-                  <span className="text-foreground font-medium">Suasana Nyaman & Alami</span>
-                </div>
+              {/* --- 5. Fitur dengan ikon profesional & teks responsif --- */}
+              <div className="pt-4 space-y-4">
+                {features.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="flex-shrink-0 h-10 w-10 flex items-center justify-center bg-primary/10 rounded-full">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="text-base md:text-lg text-foreground font-medium">
+                        {feature.text}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
