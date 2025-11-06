@@ -37,7 +37,7 @@ const Testimonials = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-light/10 via-accent/10 to-secondary/10">
+    <section id="testimonials" className="py-20 bg-gradient-to-br from-primary-light/10 via-accent/10 to-secondary/10">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
