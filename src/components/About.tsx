@@ -26,8 +26,8 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="max-w-6xl mx-auto"
         >
-          {/* --- 3. Judul responsif --- */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-gradient">
+          {/* --- PERUBAHAN FONT: Judul Utama --- */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-12 text-gradient">
             Tentang Kami
           </h2>
           
@@ -50,17 +50,17 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-6"
             >
-              {/* --- 4. Paragraf responsif (text-base md:text-lg) --- */}
-              <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
-                {/* Hapus 'text-xl' agar ukuran konsisten */}
+              {/* --- PERUBAHAN FONT: Paragraf --- */}
+              <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
                 <strong className="font-semibold text-primary">Kedai Arunika</strong> adalah kedai minuman lokal yang hadir untuk menyegarkan hari Anda dengan berbagai pilihan minuman segar yang dibuat dari bahan-bahan pilihan berkualitas tinggi.
               </p>
               
-              <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+              {/* --- PERUBAHAN FONT: Paragraf --- */}
+              <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
                 Dari jus buah segar, kelapa muda yang manis, hingga milkshake yang creamy - setiap minuman di Kedai Arunika dibuat dengan semangat untuk menyegarkan hari Anda!
               </p>
 
-              {/* --- 5. Fitur dengan ikon profesional & teks responsif --- */}
+              {/* --- Fitur dengan ikon profesional & teks responsif --- */}
               <div className="pt-4 space-y-4">
                 {features.map((feature, index) => {
                   const Icon = feature.icon;
@@ -69,7 +69,8 @@ const About = () => {
                       <div className="flex-shrink-0 h-10 w-10 flex items-center justify-center bg-primary/10 rounded-full">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
-                      <span className="text-base md:text-lg text-foreground font-medium">
+                      {/* --- PERUBAHAN FONT: Teks Fitur --- */}
+                      <span className="text-sm md:text-base text-foreground font-medium">
                         {feature.text}
                       </span>
                     </div>

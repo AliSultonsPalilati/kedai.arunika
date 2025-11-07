@@ -28,9 +28,9 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          {/* --- PERBAIKAN: Ukuran font responsif --- */}
+          {/* --- PERUBAHAN FONT: Judul Utama --- */}
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 
                        [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -39,9 +39,9 @@ const Hero = () => {
             Kedai Arunika
           </motion.h1>
           
-          {/* --- PERBAIKAN: Ukuran font responsif --- */}
+          {/* --- PERUBAHAN FONT: Subtitle --- */}
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-white/95 font-light max-w-2xl mx-auto mb-8 
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 font-light max-w-2xl mx-auto mb-8 
                        [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -56,7 +56,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            {/* --- PERBAIKAN: Menghapus text-lg, px-8, py-6. Memakai size="lg" --- */}
+            {/* --- Tombol sudah menggunakan size="lg", ini sudah bagus --- */}
             <Button 
               size="lg"
               onClick={() => scrollToSection("menu")}
@@ -65,7 +65,7 @@ const Hero = () => {
               Lihat Menu
             </Button>
             
-            {/* --- PERBAIKAN: Menghapus text-lg, px-8, py-6. Memakai size="lg" --- */}
+            {/* --- Tombol sudah menggunakan size="lg", ini sudah bagus --- */}
             <Button 
               size="lg"
               variant="outline"
@@ -87,7 +87,8 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-white text-3xl" // <-- Ukuran ikon scroll juga dikecilkan
+            // --- PERUBAHAN FONT: Ikon Scroll ---
+            className="text-white text-2xl" 
           >
             ↓
           </motion.div>

@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Coffee, Droplets, IceCream, Sparkles } from "lucide-react";
 
 // --- Import Gambar ---
-// (Impor gambar tetap sama)
 import jusAlpukat from "@/assets/jus/jus-alpukat.jpg";
 import smoothiesBuahNaga from "@/assets/jus/smoothies-buahNaga.jpg";
 import alpukatKocok from "@/assets/jus/alpukat-kocok.jpg";
@@ -69,12 +68,12 @@ const Menu = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* --- PERBAIKAN: Judul responsif --- */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-foreground">
+          {/* --- PERUBAHAN FONT: Judul Utama --- */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-foreground">
             Menu Minuman
           </h2>
-          {/* --- PERBAIKAN: Subtitle responsif --- */}
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+          {/* --- PERUBAHAN FONT: Subtitle --- */}
+          <p className="text-muted-foreground text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
             Pilihan minuman segar untuk menemani hari Anda
           </p>
         </motion.div>
@@ -88,7 +87,7 @@ const Menu = () => {
         >
           <button
             onClick={() => setSelectedCategory(null)}
-            /* --- PERBAIKAN: Tambah text-sm --- */
+            /* --- Font 'text-sm' sudah bagus, tidak diubah --- */
             className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-300 text-sm ${
               selectedCategory === null
                 ? "bg-foreground text-background shadow-md"
@@ -106,7 +105,7 @@ const Menu = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                 transition={{ duration: 0.4, delay: 0.3 + idx * 0.1 }}
                 onClick={() => setSelectedCategory(cat.name)}
-                /* --- PERBAIKAN: Tambah text-sm --- */
+                /* --- Font 'text-sm' sudah bagus, tidak diubah --- */
                 className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 text-sm ${
                   selectedCategory === cat.name
                     ? "bg-foreground text-background shadow-md"
@@ -146,7 +145,8 @@ const Menu = () => {
 
                 {/* Content */}
                 <CardContent className="p-5">
-                  <h4 className="text-lg font-semibold text-foreground mb-1.5">
+                  {/* --- PERUBAHAN FONT: Judul Kartu --- */}
+                  <h4 className="text-base md:text-lg font-semibold text-foreground mb-1.5">
                     {item.name}
                   </h4>
                   {item.description && (
@@ -154,8 +154,8 @@ const Menu = () => {
                       {item.description}
                     </p>
                   )}
-                  {/* --- PERBAIKAN: Harga diubah dari text-xl ke text-lg --- */}
-                  <p className="text-lg font-bold text-foreground">
+                  {/* --- PERUBAHAN FONT: Harga Kartu --- */}
+                  <p className="text-base md:text-lg font-bold text-foreground">
                     {item.price}
                   </p>
                 </CardContent>
@@ -171,8 +171,8 @@ const Menu = () => {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            {/* --- PERBAIKAN: Teks empty state responsif --- */}
-            <p className="text-muted-foreground text-base md:text-lg">
+            {/* --- PERUBAHAN FONT: Teks empty state --- */}
+            <p className="text-muted-foreground text-sm md:text-base">
               Tidak ada menu dalam kategori ini
             </p>
           </motion.div>

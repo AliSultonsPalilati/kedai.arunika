@@ -62,12 +62,12 @@ const Testimonials = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          {/* --- PERBAIKAN: Judul responsif --- */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-4 text-gradient">
+          {/* --- PERUBAHAN FONT: Judul Utama --- */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 text-gradient">
             Kata Pelanggan
           </h2>
-          {/* --- PERBAIKAN: Subtitle responsif --- */}
-          <p className="text-center text-muted-foreground text-base md:text-lg mb-16 max-w-2xl mx-auto">
+          {/* --- PERUBAHAN FONT: Subtitle --- */}
+          <p className="text-center text-muted-foreground text-sm md:text-base lg:text-lg mb-16 max-w-2xl mx-auto">
             Testimoni dari pelanggan setia Kedai Arunika
           </p>
 
@@ -93,7 +93,7 @@ const Testimonials = () => {
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          {/* --- PERBAIKAN: Teks nama responsif --- */}
+                          {/* --- Teks nama ini sudah responsif (text-base md:text-lg), jadi tidak diubah --- */}
                           <h4 className="font-semibold text-primary text-base md:text-lg">
                             {testimonial.name}
                           </h4>
@@ -103,8 +103,8 @@ const Testimonials = () => {
                         </div>
                       </div>
                       
-                      {/* Teks review sudah text-base, ini bagus */}
-                      <p className="text-foreground/80 leading-relaxed italic relative z-10 text-base border-l-4 border-primary/30 pl-4 py-2">
+                      {/* --- PERUBAHAN FONT: Teks Review --- */}
+                      <p className="text-foreground/80 leading-relaxed italic relative z-10 text-sm md:text-base border-l-4 border-primary/30 pl-4 py-2">
                         "{testimonial.review}"
                       </p>
                     </div>

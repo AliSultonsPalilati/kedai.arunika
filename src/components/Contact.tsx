@@ -35,12 +35,12 @@ const Contact = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          {/* --- PERBAIKAN: Judul responsif --- */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-center mb-4 text-gradient">
+          {/* --- PERUBAHAN FONT: Judul Utama --- */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 text-gradient">
             Hubungi Kami
           </h2>
-          {/* --- PERBAIKAN: Subtitle responsif --- */}
-          <p className="text-center text-muted-foreground text-base md:text-lg mb-16 max-w-2xl mx-auto">
+          {/* --- PERUBAHAN FONT: Subtitle --- */}
+          <p className="text-center text-muted-foreground text-sm md:text-base lg:text-lg mb-16 max-w-2xl mx-auto">
             Kunjungi kami atau hubungi untuk informasi lebih lanjut
           </p>
 
@@ -52,12 +52,12 @@ const Contact = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* --- PERBAIKAN: Judul kolom responsif --- */}
-              <h3 className="text-xl md:text-2xl font-semibold text-primary mb-3">
+              {/* --- PERUBAHAN FONT: Judul kolom --- */}
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-primary mb-3">
                 Lokasi Kami
               </h3>
-              {/* --- PERBAIKAN: Teks paragraf responsif --- */}
-              <p className="text-muted-foreground mb-4 text-base md:text-lg">
+              {/* --- PERUBAHAN FONT: Teks paragraf --- */}
+              <p className="text-muted-foreground mb-4 text-sm md:text-base">
                 Temukan kami dengan mudah di lokasi strategis berikut. Kami
                 tunggu kedatangan Anda!
               </p>
@@ -101,12 +101,12 @@ const Contact = () => {
                         </div>
 
                         <div className="flex-grow">
-                          {/* --- PERBAIKAN: Judul kartu responsif --- */}
-                          <h3 className="text-lg md:text-xl font-semibold text-primary mb-1">
+                          {/* --- PERUBAHAN FONT: Judul kartu --- */}
+                          <h3 className="text-base md:text-lg lg:text-xl font-semibold text-primary mb-1">
                             {info.title}
                           </h3>
-                          {/* --- PERBAIKAN: Teks isi kartu responsif --- */}
-                          <p className="text-foreground/80 text-base">
+                          {/* --- PERUBAHAN FONT: Teks isi kartu --- */}
+                          <p className="text-foreground/80 text-sm md:text-base">
                             {info.content}
                           </p>
                         </div>

@@ -60,7 +60,8 @@ const Header = () => {
           <div className="flex items-center justify-between">
             <motion.button
               onClick={() => scrollToSection("hero")}
-              className="text-xl md:text-2xl font-bold text-primary hover:text-primary-dark transition-colors"
+              // --- PERUBAHAN FONT: Brand Name ---
+              className="text-lg md:text-xl font-bold text-primary hover:text-primary-dark transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -123,11 +124,11 @@ const Header = () => {
                       key={item.id}
                       variant={isLastItem ? "default" : "ghost"}
                       onClick={() => scrollToSection(item.id)}
-                      /* --- PERBAIKAN UKURAN DI SINI --- */
+                      /* --- UKURAN FONT INI SUDAH BENAR (sesuai perbaikan Anda) --- */
                       className={
                         isLastItem
-                          ? "bg-primary hover:bg-primary-dark text-primary-foreground text-base mt-4 py-3" // text-lg -> text-base, py-4 -> py-3
-                          : "text-foreground hover:text-primary hover:bg-primary/10 justify-start text-base py-3" // text-lg -> text-base, py-4 -> py-3
+                          ? "bg-primary hover:bg-primary-dark text-primary-foreground text-base mt-4 py-3" 
+                          : "text-foreground hover:text-primary hover:bg-primary/10 justify-start text-base py-3"
                       }
                     >
                       {item.label}
