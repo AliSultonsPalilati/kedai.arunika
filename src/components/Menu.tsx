@@ -6,7 +6,7 @@ import { Coffee, Droplets, IceCream, Sparkles } from "lucide-react";
 
 // --- Import Gambar ---
 import jusAlpukat from "@/assets/jus/jus-alpukat.jpg";
-import smoothiesBuahNaga from "@/assets/jus/smoothies-buahNaga.jpg";
+import smoothiesBuahNaga from "@/assets/jus/smoothies-buahnaga.jpg";
 import alpukatKocok from "@/assets/jus/alpukat-kocok.jpg";
 import durianKocok from "@/assets/jus/durian-kocok.jpg";
 import kelapaGulmer from "@/assets/kelapa/kelapa-gulmer.jpeg";
