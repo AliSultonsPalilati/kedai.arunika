@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
   { name: "Jus Alpukat", price: "20K", image: jusAlpukat, category: "Jus", description: "Alpukat segar & creamy" },
   { name: "Jus Buah Naga", price: "20K", image: smoothiesBuahNaga, category: "Jus", description: "Kaya antioksidan" },
   { name: "Alpukat Kocok", price: "20K", image: alpukatKocok, category: "Jus", description: "Dingin & menyegarkan" },
-  { name: "Durian Kocok", price: "20K", image: durianKocok, category: "Jus", description: "Raja buah dalam gelas" },
+  { name: "Durian Kocok", price: "25k", image: durianKocok, category: "Jus", description: "Raja buah dalam gelas" },
   { name: "Es Kelapa Gulmer", price: "20K", image: kelapaGulmer, category: "Kelapa", description: "Manis & segar" },
   { name: "Es Kelapa Sirup", price: "20K", image: kelapaSirup, category: "Kelapa", description: "Klasik favorit" },
   { name: "Es Kelapa Original", price: "20K", image: kelapaOriginal, category: "Kelapa", description: "Asli tanpa tambahan" },
